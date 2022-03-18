@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:personal_expenses/transaction.dart';
+import 'package:personal_expenses/models/transaction.dart';
 import 'package:intl/intl.dart';
 
 void main() {
@@ -40,6 +40,9 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
+  String? titleInput;
+  String? amountInput;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,9 +69,13 @@ class MyHomePage extends StatelessWidget {
                 children: <Widget>[
                   TextField(
                     decoration: InputDecoration(labelText: "title"),
+                    onChanged: (val) {
+                      titleInput = val;
+                    },
                   ),
                   TextField(
                     decoration: InputDecoration(labelText: "Amount"),
+                    onChanged: (val) => amountInput = val,
                   ),
                   FlatButton(
                     child: Text("+ dodaj"),
