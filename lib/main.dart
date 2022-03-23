@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/models/transaction.dart';
+import 'package:personal_expenses/widgets/chart.dart';
 import 'package:personal_expenses/widgets/new_transaction.dart';
 import 'package:personal_expenses/widgets/transaction_list.dart';
 
@@ -52,6 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
     //   date: DateTime.now(),
     // ),
   ];
+  List<Transaction> get _recentTransaction {
+    return _userTransactions.where((tx) {
+      return tx.date!.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
 
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTX = Transaction(
@@ -101,15 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Theme.of(context).colorScheme.secondary,
-                child: Text("Lista zakupów",
-                    style: Theme.of(context).textTheme.bodyText1),
-                elevation: 5,
-              ),
-            ),
+            Chart(_recentTransaction),
             TransactionList(_userTransactions),
           ],
         ),
