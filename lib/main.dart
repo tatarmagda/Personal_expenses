@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
             .copyWith(secondary: Color.fromARGB(255, 190, 137, 22)),
+        textTheme:
+            TextTheme(bodyText1: TextStyle(fontSize: 20, color: Colors.white)),
+        fontFamily: "Quicksand-Regular",
       ),
       home: MyHomePage(),
     );
@@ -82,6 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(
           "Expenses",
+          style: Theme.of(context).textTheme.bodyText1,
         ),
         centerTitle: true,
         actions: [
@@ -102,10 +106,8 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               child: Card(
                 color: Theme.of(context).colorScheme.secondary,
-                child: Text(
-                  "Lista zakupów",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
+                child: Text("Lista zakupów",
+                    style: Theme.of(context).textTheme.bodyText1),
                 elevation: 5,
               ),
             ),
