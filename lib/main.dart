@@ -21,8 +21,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
             .copyWith(secondary: Color.fromARGB(255, 190, 137, 22)),
-        textTheme:
-            TextTheme(bodyText1: TextStyle(fontSize: 20, color: Colors.white)),
+        textTheme: TextTheme(
+          bodyText1: TextStyle(fontSize: 20, color: Colors.white),
+          bodyText2: TextStyle(fontSize: 20, color: Colors.black),
+        ),
         fontFamily: "Quicksand-Regular",
       ),
       home: MyHomePage(),
@@ -36,22 +38,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
-
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: "t1",
-      title: "zakupy",
-      amount: 11.22,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t13",
-      title: "kupy",
-      amount: 71.24,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: "t1",
+    //   title: "zakupy",
+    //   amount: 11.22,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: "t13",
+    //   title: "kupy",
+    //   amount: 71.24,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
