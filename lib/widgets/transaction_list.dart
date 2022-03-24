@@ -31,21 +31,21 @@ class TransactionList extends StatelessWidget {
                 return Card(
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                   child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      radius: 30,
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: FittedBox(
-                            child: Text("\$${transactions[index].amount}")),
-                      ),
-                    ),
                     title: Text(transactions[index].title!,
                         style: Theme.of(context).textTheme.bodyText2),
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date!),
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                    ),
+                    leading: CircleAvatar(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      radius: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: FittedBox(
+                            child: Text("\$${transactions[index].amount}")),
+                      ),
                     ),
                   ),
                 );

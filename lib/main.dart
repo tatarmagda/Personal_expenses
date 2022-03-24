@@ -19,8 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Expenses',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
-            .copyWith(secondary: Color.fromARGB(255, 190, 137, 22)),
+        colorScheme:
+            ColorScheme.fromSwatch(primarySwatch: Colors.teal).copyWith(
+          secondary: Color.fromARGB(255, 190, 137, 22),
+        ),
         textTheme: TextTheme(
           bodyText1: TextStyle(fontSize: 20, color: Colors.white),
           bodyText2: TextStyle(fontSize: 20, color: Colors.black),
