@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, prefer_const_constructors
+// ignore_for_file: deprecated_member_use, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -74,36 +74,58 @@ class _NewTransactionState extends State<NewTransaction> {
               keyboardType: TextInputType.number,
               onSubmitted: (_) => _submitData(),
             ),
-            Container(
-              height: 70,
-              child: Row(
-                children: [
-                  Text(
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                height: 100,
+                child: Column(
+                  children: [
                     _selectedDate == null
-                        ? "No Date Chosem!"
-                        : "Wybrana data \n ${DateFormat.yMd().format(_selectedDate!)}",
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                  (RaisedButton(
-                    textColor: Theme.of(context).colorScheme.primary,
-                    child: Text(
-                      "Choose Date",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
+                        ? Text("Nie wybrano daty!",
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 170, 25, 25),
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center)
+                        : Text(
+                            "Wybrana data: \n ${DateFormat.yMd().format(_selectedDate!)}",
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center),
+                    (RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      textColor: Theme.of(context).colorScheme.primary,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Wybierz datę",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10),
+                          ),
+                          Icon(Icons.calendar_month),
+                        ],
                       ),
-                    ),
-                    onPressed: () {
-                      _presentDatePIcker();
-                    },
-                  ))
-                ],
+                      onPressed: () {
+                        _presentDatePIcker();
+                      },
+                    ))
+                  ],
+                ),
               ),
             ),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(50),
               alignment: AlignmentDirectional.bottomEnd,
               child: FlatButton(
                 child: Text("+ dodaj",
